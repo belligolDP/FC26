@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC26 - Il Videogioco</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #764ba2;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .description {
+            color: #333;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FC26</h1>
+        <div class="subtitle">Il Videogioco dell'Avventura</div>
+        
+        <div class="description">
+            <p>Benvenuto in FC26, un'esperienza di gioco immersiva e entusiasmante. Preparati per un'avventura indimenticabile!</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🎮 Gameplay</h3>
+                <p>Un'esperienza di gioco coinvolgente e divertente</p>
+            </div>
+            <div class="feature">
+                <h3>🌍 Mondo</h3>
+                <p>Esplora un mondo vasto e affascinante</p>
+            </div>
+            <div class="feature">
+                <h3>⭐ Avventura</h3>
+                <p>Completa missioni epiche ed emozionanti</p>
+            </div>
+        </div>
+
+        <div>
+            <button class="cta-button">Inizia a Giocare</button>
+            <button class="cta-button">Scopri di Più</button>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 FC26 - Tutti i diritti riservati</p>
+        </footer>
+    </div>
+</body>
+</html>
