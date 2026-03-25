@@ -1243,7 +1243,7 @@
                 
                 <div class="gallery-grid">
                     <!-- Image 1 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">⚽</div>
                         <div class="gallery-overlay">
                             <h4>Ultimate Team</h4>
@@ -1252,7 +1252,7 @@
                     </div>
 
                     <!-- Image 2 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">🏟️</div>
                         <div class="gallery-overlay">
                             <h4>Stadio Leggendario</h4>
@@ -1261,7 +1261,7 @@
                     </div>
 
                     <!-- Image 3 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">👥</div>
                         <div class="gallery-overlay">
                             <h4>Pro Club Online</h4>
@@ -1270,7 +1270,7 @@
                     </div>
 
                     <!-- Image 4 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">🏆</div>
                         <div class="gallery-overlay">
                             <h4>Campioni Mondiali</h4>
@@ -1279,7 +1279,7 @@
                     </div>
 
                     <!-- Image 5 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">⚡</div>
                         <div class="gallery-overlay">
                             <h4>Azioni Spettacolari</h4>
@@ -1288,7 +1288,7 @@
                     </div>
 
                     <!-- Image 6 -->
-                    <div class="gallery-item" onclick="playSound()">
+                    <div class="gallery-item">
                         <div class="gallery-placeholder">🎮</div>
                         <div class="gallery-overlay">
                             <h4>Gameplay Realistico</h4>
@@ -1332,6 +1332,8 @@
     <script>
         let musicEnabled = false;
         let soundEnabled = true;
+        let audioContext = null;
+        
         const bgMusic = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
         const soundBtn = document.getElementById('soundBtn');
@@ -1339,10 +1341,23 @@
         // Inizializza il volume
         bgMusic.volume = 0.3;
 
+        // Inizializza AudioContext al primo accesso
+        function getAudioContext() {
+            if (!audioContext) {
+                try {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.log('AudioContext non supportato');
+                    return null;
+                }
+            }
+            return audioContext;
+        }
+
         function toggleMusic() {
             musicEnabled = !musicEnabled;
             if (musicEnabled) {
-                bgMusic.play();
+                bgMusic.play().catch(err => console.log('Errore riproduzione musica:', err));
                 musicBtn.classList.add('active');
             } else {
                 bgMusic.pause();
@@ -1365,28 +1380,47 @@
 
         function playSound() {
             if (soundEnabled) {
-                // Riproduce un beep HTML5 sintetico
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 800;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.1);
+                try {
+                    const ctx = getAudioContext();
+                    if (!ctx) return;
+                    
+                    // Resume AudioContext se in stato suspended
+                    if (ctx.state === 'suspended') {
+                        ctx.resume();
+                    }
+                    
+                    const oscillator = ctx.createOscillator();
+                    const gainNode = ctx.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(ctx.destination);
+                    
+                    oscillator.frequency.value = 800;
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    
+                    oscillator.start(ctx.currentTime);
+                    oscillator.stop(ctx.currentTime + 0.1);
+                } catch (e) {
+                    console.log('Errore riproduzione suono:', e);
+                }
             }
         }
 
-        // Aggiunge effetto click aos pulsanti
-        document.querySelectorAll('.btn, .mode-card, .feature-card, .tutorial-card').forEach(el => {
-            el.addEventListener('click', playSound);
+        // Aggiungi event listener ai pulsanti (senza doppi onclick)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rimuovi gli onclick dalle gallery-items
+            document.querySelectorAll('.gallery-item').forEach(el => {
+                el.onclick = null;
+                el.addEventListener('click', playSound);
+            });
+            
+            // Aggiungi agli altri elementi
+            document.querySelectorAll('.btn, .mode-card, .feature-card, .tutorial-card').forEach(el => {
+                el.addEventListener('click', playSound);
+            });
         });
     </script>
 </body>
