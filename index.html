@@ -495,6 +495,271 @@
             font-size: 0.95rem;
         }
 
+        /* Game Modes Section */
+        .modes-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.05), rgba(131, 56, 236, 0.08));
+            position: relative;
+            z-index: 1;
+        }
+
+        .modes-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .mode-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mode-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .mode-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(131, 56, 236, 0.2));
+            padding: 2rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mode-card h3 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mode-subtitle {
+            color: #ff006e;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .mode-content {
+            padding: 2rem;
+        }
+
+        .mode-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .mode-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-features li {
+            color: #b0b0b0;
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .mode-features li:before {
+            content: '⚽';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        .mode-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            color: #00d4ff;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, rgba(131, 56, 236, 0.08), transparent);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .gallery-item:hover {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(131, 56, 236, 0.1));
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent, rgba(10, 14, 39, 0.9));
+            padding: 1.5rem;
+            color: #fff;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: #00d4ff;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        /* Media Controls */
+        .media-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            gap: 1rem;
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .media-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-btn:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+            transform: scale(1.1);
+        }
+
+        .media-btn.active {
+            background: #ff006e;
+            color: white;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .volume-control input {
+            width: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .media-controls {
+                bottom: 20px;
+                right: 20px;
+                flex-wrap: wrap;
+                width: auto;
+                max-width: 200px;
+            }
+
+            .volume-control {
+                display: none;
+            }
+        }
+
         /* Footer */
         footer {
             background: rgba(10, 14, 39, 0.9);
@@ -548,6 +813,14 @@
             .tips-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -558,8 +831,9 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#tutorial">Tutorial</a></li>
+                <li><a href="#modes">Modalità</a></li>
+                <li><a href="#gallery">Galleria</a></li>
                 <li><a href="#play">Gioca</a></li>
-                <li><a href="#contact">Contatti</a></li>
             </ul>
         </nav>
     </header>
@@ -625,24 +899,24 @@
         <!-- Tutorial Section for Beginners -->
         <section class="tutorial-section" id="tutorial">
             <div class="tutorial-container">
-                <h2 class="section-title">📖 Guida per Nuovi Giocatori</h2>
-                <p style="text-align: center; color: #b0b0b0; margin-bottom: 2rem; font-size: 1.1rem;">Scopri i fondamentali e diventa un campione di FC26</p>
+                <h2 class=\"section-title\">📖 Guida per Nuovi Calciatori</h2>
+                <p style=\"text-align: center; color: #b0b0b0; margin-bottom: 2rem; font-size: 1.1rem;\">Scopri i fondamentali di FC26 e diventa un campione calcistico</p>
                 
                 <div class="tutorial-grid">
                     <!-- Tutorial 1 -->
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">1</div>
-                            <h3>Primi Passi nel Gioco</h3>
+                            <h3>Inizia con Ultimate Team</h3>
                             <span class="tutorial-level">Principiante</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Impara le basi di FC26 e familiarizzati con i controlli fondamentali del gioco.</p>
+                            <p>Scopri la modalità più popolare: costruisci la tua squadra personalizzata da zero.</p>
                             <ul class="tutorial-steps">
-                                <li>Configurare i comandi personalizzati</li>
-                                <li>Comprendere il sistema di livelli</li>
-                                <li>Completare il tutorial introduttivo</li>
-                                <li>Sbloccare il tuo primo equipaggiamento</li>
+                                <li>Ottieni pacchetti di avvio gratuiti</li>
+                                <li>Comprendi il sistema di chimica</li>
+                                <li>Completa i primi Squad Builder</li>
+                                <li>Guadagna monete gioco dalla Squad Battle</li>
                             </ul>
                         </div>
                     </div>
@@ -651,16 +925,16 @@
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">2</div>
-                            <h3>Padroneggia il Combattimento</h3>
+                            <h3>Padroneggia le Tattiche</h3>
                             <span class="tutorial-level">Intermedio</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Sviluppa strategie di combattimento e impara a usare le tue abilità speciali.</p>
+                            <p>Impara le strategie tattiche per dominare le partite:</p>
                             <ul class="tutorial-steps">
-                                <li>Eseguire attacchi base e speciali</li>
-                                <li>Imparare i combos avanzati</li>
-                                <li>Usare potenziamenti temporanei</li>
-                                <li>Dominare il sistema di schivate</li>
+                                <li>Configura le formazioni vincenti</li>
+                                <li>Padroneggia i dribbling e i scatti</li>
+                                <li>Esegui calci piazzati perfetti</li>
+                                <li>Usa le istruzioni tattiche in partita</li>
                             </ul>
                         </div>
                     </div>
@@ -669,16 +943,16 @@
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">3</div>
-                            <h3>Quest e Missioni</h3>
+                            <h3>Costruisci la Tua Rosa</h3>
                             <span class="tutorial-level">Principiante</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Completa missioni epiche e raccogli ricompense incredibili lungo il percorso.</p>
+                            <p>Scegli i giocatori migliori e costruisci una squadra coerente.</p>
                             <ul class="tutorial-steps">
-                                <li>Accettare e completare quest giornaliere</li>
-                                <li>Scoprire missioni nascoste</li>
-                                <li>Ottenere ricompense bonus</li>
-                                <li>Sbloccare aree segrete</li>
+                                <li>Seleziona giocatori per ruolo</li>
+                                <li>Massimizza la chimica della squadra</li>
+                                <li>Sfrutta i bonus di lega e nazione</li>
+                                <li>Aggiorna i tuoi giocatori con Oggetti</li>
                             </ul>
                         </div>
                     </div>
@@ -687,16 +961,16 @@
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">4</div>
-                            <h3>Gestione Equipaggiamento</h3>
+                            <h3>Trading nel Mercato</h3>
                             <span class="tutorial-level">Intermedio</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Scopri come equipaggiare il tuo personaggio e ottimizzare le statistiche.</p>
+                            <p>Diventa un esperto di mercato e accumula monete infinite.</p>
                             <ul class="tutorial-steps">
-                                <li>Equipaggiare armi e armature</li>
-                                <li>Aggiornare l'attrezzatura</li>
-                                <li>Combinare set di equipaggiamento</li>
-                                <li>Sfruttare i bonus nascosti</li>
+                                <li>Identifica i prezzi potenziali</li>
+                                <li>Compra a basso prezzo, vendi alto</li>
+                                <li>Usa i filtri avanzati del mercato</li>
+                                <li>Monitora i trend del mercato</li>
                             </ul>
                         </div>
                     </div>
@@ -705,16 +979,16 @@
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">5</div>
-                            <h3>Esplora il Mondo</h3>
+                            <h3>Competizioni Online</h3>
                             <span class="tutorial-level">Principiante</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Naviga i vasti mondi di FC26 e scopri i segreti nascosti in ogni angolo.</p>
+                            <p>Sfida giocatori reali in modalità competitive.</p>
                             <ul class="tutorial-steps">
-                                <li>Sbloccate nuove mappe e aree</li>
-                                <li>Trovare tesori nascosti</li>
-                                <li>Incontrare PNG importanti</li>
-                                <li>Scoprire la trama principale</li>
+                                <li>Accedi ai Division Rivals</li>
+                                <li>Vinci i FUT Champions Cup</li>
+                                <li>Completa i Centurioni</li>
+                                <li>Salita nella classifica mondiale</li>
                             </ul>
                         </div>
                     </div>
@@ -723,16 +997,16 @@
                     <div class="tutorial-card">
                         <div class="tutorial-header">
                             <div class="tutorial-number">6</div>
-                            <h3>Multiplayer e PvP</h3>
+                            <h3>Pro Club Online</h3>
                             <span class="tutorial-level">Avanzato</span>
                         </div>
                         <div class="tutorial-content">
-                            <p>Sfida altri giocatori in battaglia e unisciti a gilde per un'esperienza sociale.</p>
+                            <p>Crea il tuo club con amici e gioca cooperativamente.</p>
                             <ul class="tutorial-steps">
-                                <li>Partecipare a battaglie PvP</li>
-                                <li>Unirsi a una gilda</li>
-                                <li>Collaborare nelle spedizioni</li>
-                                <li>Salire le classifiche globali</li>
+                                <li>Crea il tuo personaggio calcista</li>
+                                <li>Unisciti a un club esistente</li>
+                                <li>Affrontate altre squadre online</li>
+                                <li>Sali di divisione con il tuo club</li>
                             </ul>
                         </div>
                     </div>
@@ -777,6 +1051,254 @@
             </div>
         </section>
 
+        <!-- Game Modes Section -->
+        <section class="modes-section" id="modes">
+            <div class="modes-container">
+                <h2 class="section-title">🎮 Modalità di Gioco</h2>
+                <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem;">Scopri tutte le modalità disponibili e trova il tuo stile di gioco preferito</p>
+                
+                <div class="modes-grid">
+                    <!-- Ultimate Team -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🏆</div>
+                            <h3>Ultimate Team</h3>
+                            <div class="mode-subtitle">La Modalità Più Popolare</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Costruisci la squadra della tua visione con oltre 40.000 giocatori con licenze ufficiali. Scambia carte, completa sfide e scopri combinazioni vincenti.</p>
+                            <ul class="mode-features">
+                                <li>Squad Building Challenge (SBC)</li>
+                                <li>Mercato Dinamico in Tempo Reale</li>
+                                <li>Pacchetti Premium e Scambi</li>
+                                <li>Obiettivi Stagionali Esclusivi</li>
+                                <li>Abilità Speciali e Potenziamenti</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">40K+</div>
+                                    <div class="stat-label">Giocatori</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">500+</div>
+                                    <div class="stat-label">Team Combo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro Club -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">👥</div>
+                            <h3>Pro Club</h3>
+                            <div class="mode-subtitle">Gioca con gli Amici</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Crea il tuo personaggio calcista unico e gioca online con i tuoi amici. Gestisci il tuo club, partecipa a tornei e raggiungi la massima divisione.</p>
+                            <ul class="mode-features">
+                                <li>Personaggio Personalizzato al 100%</li>
+                                <li>Progressione di Carriera Infinita</li>
+                                <li>Tornei Inter-Club Globali</li>
+                                <li>Sistema di Divisione Dinamico</li>
+                                <li>Ricompense Settimanali Esclusive</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Divisioni</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">∞</div>
+                                    <div class="stat-label">Progressione</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carriera -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">⭐</div>
+                            <h3>Modalità Carriera</h3>
+                            <div class="mode-subtitle">Vivi una Storia Epica</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Scegli di essere un giocatore o un allenatore. Vivi la tua carriera attraverso stagioni realistiche con narrativa personalizzata e decisioni che contano.</p>
+                            <ul class="mode-features">
+                                <li>Ruoli Giocatore e Allenatore</li>
+                                <li>Contratti Dinamici e Negoziazioni</li>
+                                <li>Rivalità Calcistiche Realistiche</li>
+                                <li>Sistema di Allenamento Avanzato</li>
+                                <li>Competizioni Autentiche (Serie A, Champions)</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">30+</div>
+                                    <div class="stat-label">Anni Giocabili</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">100+</div>
+                                    <div class="stat-label">Squadre</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Squad Battle -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🎯</div>
+                            <h3>Squad Battle</h3>
+                            <div class="mode-subtitle">Sfida l'IA</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Affronta squadre controllate dall'IA in partite con difficoltà progressive. Guadagna monete, punti e ricompense senza rischi competitivi.</p>
+                            <ul class="mode-features">
+                                <li>8 Livelli di Difficoltà</li>
+                                <li>Ricompense Garantite Ogni Partita</li>
+                                <li>Sfide Settimanali Specifiche</li>
+                                <li>Classifiche per Punti Totali</li>
+                                <li>Pacchetti e Monete Sbloccabili</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">40</div>
+                                    <div class="stat-label">Partite/Settimana</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">30K+</div>
+                                    <div class="stat-label">Monete Max</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Division Rivals -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🥊</div>
+                            <h3>Division Rivals</h3>
+                            <div class="mode-subtitle">Competizione Online</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Competi contro giocatori reali nella tua divisione. Salita attraverso 10 divisioni e guadagna ricompense basate sulla tua posizione finale.</p>
+                            <ul class="mode-features">
+                                <li>10 Divisioni Competitive</li>
+                                <li>Partite Settimanali Limitate (30)</li>
+                                <li>Ricompense Divisione al Termine</li>
+                                <li>Promozioni e Retrocessioni</li>
+                                <li>Pack Esclusivi come Premi</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">Infiniti</div>
+                                    <div class="stat-label">Giocatori</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">Settimanale</div>
+                                    <div class="stat-label">Reset</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FUT Champions -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">👑</div>
+                            <h3>FUT Champions</h3>
+                            <div class="mode-subtitle">Il Massimo della Competizione</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Accedi ai playoff globali e compete per il titolo di campione mondiale. Premi epici e riconoscimento per i migliori giocatori del mondo.</p>
+                            <ul class="mode-features">
+                                <li>Qualificazioni Settimanali</li>
+                                <li>Playoff Internazionali</li>
+                                <li>Premi Leggendari e Card Uniche</li>
+                                <li>Streaming dei Migliori Match</li>
+                                <li>Trofeo Fisico per il Vincitore</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">Milioni</div>
+                                    <div class="stat-label">Partecipanti</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">Mensile</div>
+                                    <div class="stat-label">Torneo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="gallery-container">
+                <h2 class="section-title">📸 Galleria Media Royalty-Free</h2>
+                <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem;">Scopri gli ultimi screenshot e artwork di FC26</p>
+                
+                <div class="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">⚽</div>
+                        <div class="gallery-overlay">
+                            <h4>Ultimate Team</h4>
+                            <p>Costruisci la tua squadra</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">🏟️</div>
+                        <div class="gallery-overlay">
+                            <h4>Stadio Leggendario</h4>
+                            <p>Gioca nei migliori stadi</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">👥</div>
+                        <div class="gallery-overlay">
+                            <h4>Pro Club Online</h4>
+                            <p>Gioca con i tuoi amici</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">🏆</div>
+                        <div class="gallery-overlay">
+                            <h4>Campioni Mondiali</h4>
+                            <p>Vinci tornei epici</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 5 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">⚡</div>
+                        <div class="gallery-overlay">
+                            <h4>Azioni Spettacolari</h4>
+                            <p>Gol da brividi</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 6 -->
+                    <div class="gallery-item" onclick="playSound()">
+                        <div class="gallery-placeholder">🎮</div>
+                        <div class="gallery-overlay">
+                            <h4>Gameplay Realistico</h4>
+                            <p>La massima immersione</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="cta-section" id="play">
             <div class="cta-content">
@@ -788,7 +1310,84 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 FC26 - Il Calcio del Futuro | Oltre 40 Milioni di Giocatori Attivi | Scopri Ultimate Team, Carriera e Pro Club</p>
+        <p>&copy; 2026 FC26 - Il Calcio del Futuro | Ultimate Team • Pro Club • Carriera • FUT Champions | 40+ Milioni di Giocatori Attivi Globalmente</p>
     </footer>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Media Controls -->
+    <div class="media-controls">
+        <button class="media-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+        <button class="media-btn" id="soundBtn" onclick="toggleSound()" title="Toggle Sound Effects">🔊</button>
+        <div class="volume-control">
+            <span>🔉</span>
+            <input type="range" min="0" max="100" value="30" id="volumeSlider" onchange="changeVolume(this.value)">
+            <span>🔊</span>
+        </div>
+    </div>
+
+    <script>
+        let musicEnabled = false;
+        let soundEnabled = true;
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const soundBtn = document.getElementById('soundBtn');
+
+        // Inizializza il volume
+        bgMusic.volume = 0.3;
+
+        function toggleMusic() {
+            musicEnabled = !musicEnabled;
+            if (musicEnabled) {
+                bgMusic.play();
+                musicBtn.classList.add('active');
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('active');
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+                soundBtn.classList.add('active');
+            } else {
+                soundBtn.classList.remove('active');
+            }
+        }
+
+        function changeVolume(value) {
+            bgMusic.volume = value / 100;
+        }
+
+        function playSound() {
+            if (soundEnabled) {
+                // Riproduce un beep HTML5 sintetico
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+            }
+        }
+
+        // Aggiunge effetto click aos pulsanti
+        document.querySelectorAll('.btn, .mode-card, .feature-card, .tutorial-card').forEach(el => {
+            el.addEventListener('click', playSound);
+        });
+    </script>
 </body>
 </html>
