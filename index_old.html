@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC26 - Next Generation Gaming</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff006e;
+            --dark: #0a0e27;
+            --accent: #8338ec;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #16213e 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 39, 0.8);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%2300d4ff" fill-opacity="0.05"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #ff006e, #8338ec);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-color: #00d4ff;
+            color: #0a0e27;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: #ff006e;
+            color: #ff006e;
+        }
+
+        .btn-secondary:hover {
+            background: #ff006e;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.4);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .float {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-30px) translateX(20px); }
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(131, 56, 236, 0.05));
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 0, 110, 0.05));
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #00d4ff;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        /* Tutorial Section */
+        .tutorial-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, rgba(131, 56, 236, 0.08), rgba(0, 212, 255, 0.05));
+            position: relative;
+            z-index: 1;
+        }
+
+        .tutorial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tutorial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tutorial-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+        }
+
+        .tutorial-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(131, 56, 236, 0.1));
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .tutorial-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #8338ec);
+            color: #0a0e27;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-card h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tutorial-level {
+            display: inline-block;
+            background: rgba(255, 0, 110, 0.2);
+            color: #ff006e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .tutorial-content {
+            padding: 2rem;
+        }
+
+        .tutorial-content p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-steps {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #00d4ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .tutorial-steps li {
+            color: #b0b0b0;
+            margin-bottom: 0.8rem;
+            margin-left: 1.5rem;
+        }
+
+        .tutorial-steps li:before {
+            content: '→ ';
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(0, 212, 255, 0.05));
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .tips-section h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 110, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip h4 {
+            color: #ff006e;
+            margin-bottom: 0.5rem;
+        }
+
+        .tip p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        /* Game Modes Section */
+        .modes-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.05), rgba(131, 56, 236, 0.08));
+            position: relative;
+            z-index: 1;
+        }
+
+        .modes-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .mode-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mode-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .mode-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(131, 56, 236, 0.2));
+            padding: 2rem;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        .mode-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .mode-card h3 {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mode-subtitle {
+            color: #ff006e;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .mode-content {
+            padding: 2rem;
+        }
+
+        .mode-description {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .mode-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-features li {
+            color: #b0b0b0;
+            padding: 0.7rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .mode-features li:before {
+            content: '⚽';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        .mode-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            color: #00d4ff;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, rgba(131, 56, 236, 0.08), transparent);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .gallery-item:hover {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.3);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(131, 56, 236, 0.1));
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent, rgba(10, 14, 39, 0.9));
+            padding: 1.5rem;
+            color: #fff;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: #00d4ff;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+
+        /* Media Controls */
+        .media-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            gap: 1rem;
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .media-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-btn:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+            transform: scale(1.1);
+        }
+
+        .media-btn.active {
+            background: #ff006e;
+            color: white;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .volume-control input {
+            width: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .media-controls {
+                bottom: 20px;
+                right: 20px;
+                flex-wrap: wrap;
+                width: auto;
+                max-width: 200px;
+            }
+
+            .volume-control {
+                display: none;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.9);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutorial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FC26</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tutorial">Tutorial</a></li>
+                <li><a href="#modes">Modalità</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#play">Gioca</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="float" style="width: 300px; height: 300px; top: 10%; left: 10%; border: 2px solid rgba(0, 212, 255, 0.3); border-radius: 50%;"></div>
+                <div class="float" style="width: 200px; height: 200px; top: 60%; right: 15%; border: 2px solid rgba(255, 0, 110, 0.3); border-radius: 50%; animation-delay: 1s;"></div>
+            </div>
+            
+            <div class="hero-content">
+                <h1>⚽ FC26</h1>
+                <div class="hero-subtitle">IL CALCIO PIÙ REALISTICO DEL 2026</div>
+                <p class="hero-description">
+                    L'esperienza calcistica più immersiva e autentica. Grafica ultra-realistica con oltre 40.000 giocatori con licenze ufficiali. Vivi il brivido di giocare e costruire la squadra dei tuoi sogni.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">🎮 Inizia a Giocare</button>
+                    <button class="btn btn-secondary">📖 Scopri di Più</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <h2 class="section-title">Perché FC26?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Grafica Rivoluzionaria</h3>
+                    <p>CalcioEngine 5.0 con texture ultrarealistica, animazioni fluide e effetti ambientali spettacolari. Ogni stadio è una capolavoro visivo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Ultimate Team</h3>
+                    <p>Costruisci la squadra dei tuoi sogni con 40.000+ giocatori con licenze ufficiali. Scambia, costruisci e comanda il tuo team impareggiabile.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏟️</div>
+                    <h3>Modalità Carriera</h3>
+                    <p>Vivi una carriera da giocatore realistica o gestisci una squadra attraverso stagioni epiche con scenari dinamici.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Pro Club Online</h3>
+                    <p>Gioca con i tuoi amici nei club pro. Crea il tuo personaggio e sali le classifiche globali con la tua squadra.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Competizioni Reali</h3>
+                    <p>Partecipa a Serie A, Champions League, Coppa Italia e competizioni internazionali con date di match autentiche.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Mercato Dinamico</h3>
+                    <p>Scambia giocatori nel Mercato con prezzi che cambiano in tempo reale. Investimenti intelligenti = profitti massimi.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorial Section for Beginners -->
+        <section class="tutorial-section" id="tutorial">
+            <div class="tutorial-container">
+                <h2 class=\"section-title\">📖 Guida per Nuovi Calciatori</h2>
+                <p style=\"text-align: center; color: #b0b0b0; margin-bottom: 2rem; font-size: 1.1rem;\">Scopri i fondamentali di FC26 e diventa un campione calcistico</p>
+                
+                <div class="tutorial-grid">
+                    <!-- Tutorial 1 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">1</div>
+                            <h3>Inizia con Ultimate Team</h3>
+                            <span class="tutorial-level">Principiante</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Scopri la modalità più popolare: costruisci la tua squadra personalizzata da zero.</p>
+                            <ul class="tutorial-steps">
+                                <li>Ottieni pacchetti di avvio gratuiti</li>
+                                <li>Comprendi il sistema di chimica</li>
+                                <li>Completa i primi Squad Builder</li>
+                                <li>Guadagna monete gioco dalla Squad Battle</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 2 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">2</div>
+                            <h3>Padroneggia le Tattiche</h3>
+                            <span class="tutorial-level">Intermedio</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Impara le strategie tattiche per dominare le partite:</p>
+                            <ul class="tutorial-steps">
+                                <li>Configura le formazioni vincenti</li>
+                                <li>Padroneggia i dribbling e i scatti</li>
+                                <li>Esegui calci piazzati perfetti</li>
+                                <li>Usa le istruzioni tattiche in partita</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 3 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">3</div>
+                            <h3>Costruisci la Tua Rosa</h3>
+                            <span class="tutorial-level">Principiante</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Scegli i giocatori migliori e costruisci una squadra coerente.</p>
+                            <ul class="tutorial-steps">
+                                <li>Seleziona giocatori per ruolo</li>
+                                <li>Massimizza la chimica della squadra</li>
+                                <li>Sfrutta i bonus di lega e nazione</li>
+                                <li>Aggiorna i tuoi giocatori con Oggetti</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 4 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">4</div>
+                            <h3>Trading nel Mercato</h3>
+                            <span class="tutorial-level">Intermedio</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Diventa un esperto di mercato e accumula monete infinite.</p>
+                            <ul class="tutorial-steps">
+                                <li>Identifica i prezzi potenziali</li>
+                                <li>Compra a basso prezzo, vendi alto</li>
+                                <li>Usa i filtri avanzati del mercato</li>
+                                <li>Monitora i trend del mercato</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 5 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">5</div>
+                            <h3>Competizioni Online</h3>
+                            <span class="tutorial-level">Principiante</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Sfida giocatori reali in modalità competitive.</p>
+                            <ul class="tutorial-steps">
+                                <li>Accedi ai Division Rivals</li>
+                                <li>Vinci i FUT Champions Cup</li>
+                                <li>Completa i Centurioni</li>
+                                <li>Salita nella classifica mondiale</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tutorial 6 -->
+                    <div class="tutorial-card">
+                        <div class="tutorial-header">
+                            <div class="tutorial-number">6</div>
+                            <h3>Pro Club Online</h3>
+                            <span class="tutorial-level">Avanzato</span>
+                        </div>
+                        <div class="tutorial-content">
+                            <p>Crea il tuo club con amici e gioca cooperativamente.</p>
+                            <ul class="tutorial-steps">
+                                <li>Crea il tuo personaggio calcista</li>
+                                <li>Unisciti a un club esistente</li>
+                                <li>Affrontate altre squadre online</li>
+                                <li>Sali di divisione con il tuo club</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Section -->
+                <div class="tips-section">
+                    <h3>💡 Consigli Essenziali per Nuovi Giocatori</h3>
+                    <div class="tips-grid">
+                        <div class="tip">
+                            <div class="tip-icon">⭐</div>
+                            <h4>Completa i Tutorial</h4>
+                            <p>Non saltare i tutorial! Ti insegnano le meccaniche essenziali e premiano con equipaggiamento bonus.</p>
+                        </div>
+                        <div class="tip">
+                            <div class="tip-icon">💪</div>
+                            <h4>Upgrade il tuo Equipaggiamento</h4>
+                            <p>Mantieni il tuo equipaggiamento aggiornato per progredire più velocemente attraverso il gioco.</p>
+                        </div>
+                        <div class="tip">
+                            <div class="tip-icon">👫</div>
+                            <h4>Unisciti a una Comunità</h4>
+                            <p>Gioca con altri giocatori, condividi strategie e divertiti insieme nella comunità vibrante di FC26.</p>
+                        </div>
+                        <div class="tip">
+                            <div class="tip-icon">📊</div>
+                            <h4>Gestisci le Risorse</h4>
+                            <p>Raccogli e spendi le tue risorse saggiamente per massimizzare la tua progressione.</p>
+                        </div>
+                        <div class="tip">
+                            <div class="tip-icon">🎯</div>
+                            <h4>Imposta Obiettivi</h4>
+                            <p>Stabilisci obiettivi giornalieri e settimanali per rimanere motivato e fare progressi costanti.</p>
+                        </div>
+                        <div class="tip">
+                            <div class="tip-icon">🏆</div>
+                            <h4>Sfrutta gli Eventi</h4>
+                            <p>Partecipa agli eventi speciali per ottenere ricompense esclusive e divertirsi con la comunità.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Modes Section -->
+        <section class="modes-section" id="modes">
+            <div class="modes-container">
+                <h2 class="section-title">🎮 Modalità di Gioco</h2>
+                <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem;">Scopri tutte le modalità disponibili e trova il tuo stile di gioco preferito</p>
+                
+                <div class="modes-grid">
+                    <!-- Ultimate Team -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🏆</div>
+                            <h3>Ultimate Team</h3>
+                            <div class="mode-subtitle">La Modalità Più Popolare</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Costruisci la squadra della tua visione con oltre 40.000 giocatori con licenze ufficiali. Scambia carte, completa sfide e scopri combinazioni vincenti.</p>
+                            <ul class="mode-features">
+                                <li>Squad Building Challenge (SBC)</li>
+                                <li>Mercato Dinamico in Tempo Reale</li>
+                                <li>Pacchetti Premium e Scambi</li>
+                                <li>Obiettivi Stagionali Esclusivi</li>
+                                <li>Abilità Speciali e Potenziamenti</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">40K+</div>
+                                    <div class="stat-label">Giocatori</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">500+</div>
+                                    <div class="stat-label">Team Combo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro Club -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">👥</div>
+                            <h3>Pro Club</h3>
+                            <div class="mode-subtitle">Gioca con gli Amici</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Crea il tuo personaggio calcista unico e gioca online con i tuoi amici. Gestisci il tuo club, partecipa a tornei e raggiungi la massima divisione.</p>
+                            <ul class="mode-features">
+                                <li>Personaggio Personalizzato al 100%</li>
+                                <li>Progressione di Carriera Infinita</li>
+                                <li>Tornei Inter-Club Globali</li>
+                                <li>Sistema di Divisione Dinamico</li>
+                                <li>Ricompense Settimanali Esclusive</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Divisioni</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">∞</div>
+                                    <div class="stat-label">Progressione</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Carriera -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">⭐</div>
+                            <h3>Modalità Carriera</h3>
+                            <div class="mode-subtitle">Vivi una Storia Epica</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Scegli di essere un giocatore o un allenatore. Vivi la tua carriera attraverso stagioni realistiche con narrativa personalizzata e decisioni che contano.</p>
+                            <ul class="mode-features">
+                                <li>Ruoli Giocatore e Allenatore</li>
+                                <li>Contratti Dinamici e Negoziazioni</li>
+                                <li>Rivalità Calcistiche Realistiche</li>
+                                <li>Sistema di Allenamento Avanzato</li>
+                                <li>Competizioni Autentiche (Serie A, Champions)</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">30+</div>
+                                    <div class="stat-label">Anni Giocabili</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">100+</div>
+                                    <div class="stat-label">Squadre</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Squad Battle -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🎯</div>
+                            <h3>Squad Battle</h3>
+                            <div class="mode-subtitle">Sfida l'IA</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Affronta squadre controllate dall'IA in partite con difficoltà progressive. Guadagna monete, punti e ricompense senza rischi competitivi.</p>
+                            <ul class="mode-features">
+                                <li>8 Livelli di Difficoltà</li>
+                                <li>Ricompense Garantite Ogni Partita</li>
+                                <li>Sfide Settimanali Specifiche</li>
+                                <li>Classifiche per Punti Totali</li>
+                                <li>Pacchetti e Monete Sbloccabili</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">40</div>
+                                    <div class="stat-label">Partite/Settimana</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">30K+</div>
+                                    <div class="stat-label">Monete Max</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Division Rivals -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">🥊</div>
+                            <h3>Division Rivals</h3>
+                            <div class="mode-subtitle">Competizione Online</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Competi contro giocatori reali nella tua divisione. Salita attraverso 10 divisioni e guadagna ricompense basate sulla tua posizione finale.</p>
+                            <ul class="mode-features">
+                                <li>10 Divisioni Competitive</li>
+                                <li>Partite Settimanali Limitate (30)</li>
+                                <li>Ricompense Divisione al Termine</li>
+                                <li>Promozioni e Retrocessioni</li>
+                                <li>Pack Esclusivi come Premi</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">Infiniti</div>
+                                    <div class="stat-label">Giocatori</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">Settimanale</div>
+                                    <div class="stat-label">Reset</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FUT Champions -->
+                    <div class="mode-card">
+                        <div class="mode-header">
+                            <div class="mode-icon">👑</div>
+                            <h3>FUT Champions</h3>
+                            <div class="mode-subtitle">Il Massimo della Competizione</div>
+                        </div>
+                        <div class="mode-content">
+                            <p class="mode-description">Accedi ai playoff globali e compete per il titolo di campione mondiale. Premi epici e riconoscimento per i migliori giocatori del mondo.</p>
+                            <ul class="mode-features">
+                                <li>Qualificazioni Settimanali</li>
+                                <li>Playoff Internazionali</li>
+                                <li>Premi Leggendari e Card Uniche</li>
+                                <li>Streaming dei Migliori Match</li>
+                                <li>Trofeo Fisico per il Vincitore</li>
+                            </ul>
+                            <div class="mode-stats">
+                                <div class="stat-item">
+                                    <div class="stat-value">Milioni</div>
+                                    <div class="stat-label">Partecipanti</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">Mensile</div>
+                                    <div class="stat-label">Torneo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="gallery-container">
+                <h2 class="section-title">📸 Galleria Media Royalty-Free</h2>
+                <p style="text-align: center; color: #b0b0b0; margin-bottom: 3rem; font-size: 1.1rem;">Scopri gli ultimi screenshot e artwork di FC26</p>
+                
+                <div class="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">⚽</div>
+                        <div class="gallery-overlay">
+                            <h4>Ultimate Team</h4>
+                            <p>Costruisci la tua squadra</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🏟️</div>
+                        <div class="gallery-overlay">
+                            <h4>Stadio Leggendario</h4>
+                            <p>Gioca nei migliori stadi</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">👥</div>
+                        <div class="gallery-overlay">
+                            <h4>Pro Club Online</h4>
+                            <p>Gioca con i tuoi amici</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🏆</div>
+                        <div class="gallery-overlay">
+                            <h4>Campioni Mondiali</h4>
+                            <p>Vinci tornei epici</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 5 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">⚡</div>
+                        <div class="gallery-overlay">
+                            <h4>Azioni Spettacolari</h4>
+                            <p>Gol da brividi</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 6 -->
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🎮</div>
+                        <div class="gallery-overlay">
+                            <h4>Gameplay Realistico</h4>
+                            <p>La massima immersione</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="play">
+            <div class="cta-content">
+                <h2>⚽ Pronto a Dominare il Calcio?</h2>
+                <p>Unisciti a milioni di calciatori in tutto il mondo. Costruisci la tua squadra leggendaria e diventa campione di FC26!</p>
+                <button class="btn btn-primary">📥 Scarica FC26 Ora</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FC26 - Il Calcio del Futuro | Ultimate Team • Pro Club • Carriera • FUT Champions | 40+ Milioni di Giocatori Attivi Globalmente</p>
+    </footer>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Media Controls -->
+    <div class="media-controls">
+        <button class="media-btn" id="musicBtn" onclick="toggleMusic()" title="Toggle Music">🎵</button>
+        <button class="media-btn" id="soundBtn" onclick="toggleSound()" title="Toggle Sound Effects">🔊</button>
+        <div class="volume-control">
+            <span>🔉</span>
+            <input type="range" min="0" max="100" value="30" id="volumeSlider" onchange="changeVolume(this.value)">
+            <span>🔊</span>
+        </div>
+    </div>
+
+    <script>
+        let musicEnabled = false;
+        let soundEnabled = true;
+        let audioContext = null;
+        
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        const soundBtn = document.getElementById('soundBtn');
+
+        // Inizializza il volume
+        bgMusic.volume = 0.3;
+
+        // Inizializza AudioContext al primo accesso
+        function getAudioContext() {
+            if (!audioContext) {
+                try {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.log('AudioContext non supportato');
+                    return null;
+                }
+            }
+            return audioContext;
+        }
+
+        function toggleMusic() {
+            musicEnabled = !musicEnabled;
+            if (musicEnabled) {
+                bgMusic.play().catch(err => console.log('Errore riproduzione musica:', err));
+                musicBtn.classList.add('active');
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('active');
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+                soundBtn.classList.add('active');
+            } else {
+                soundBtn.classList.remove('active');
+            }
+        }
+
+        function changeVolume(value) {
+            bgMusic.volume = value / 100;
+        }
+
+        function playSound() {
+            if (soundEnabled) {
+                try {
+                    const ctx = getAudioContext();
+                    if (!ctx) return;
+                    
+                    // Resume AudioContext se in stato suspended
+                    if (ctx.state === 'suspended') {
+                        ctx.resume();
+                    }
+                    
+                    const oscillator = ctx.createOscillator();
+                    const gainNode = ctx.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(ctx.destination);
+                    
+                    oscillator.frequency.value = 800;
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+                    
+                    oscillator.start(ctx.currentTime);
+                    oscillator.stop(ctx.currentTime + 0.1);
+                } catch (e) {
+                    console.log('Errore riproduzione suono:', e);
+                }
+            }
+        }
+
+        // Aggiungi event listener ai pulsanti (senza doppi onclick)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rimuovi gli onclick dalle gallery-items
+            document.querySelectorAll('.gallery-item').forEach(el => {
+                el.onclick = null;
+                el.addEventListener('click', playSound);
+            });
+            
+            // Aggiungi agli altri elementi
+            document.querySelectorAll('.btn, .mode-card, .feature-card, .tutorial-card').forEach(el => {
+                el.addEventListener('click', playSound);
+            });
+        });
+    </script>
+</body>
+</html>
